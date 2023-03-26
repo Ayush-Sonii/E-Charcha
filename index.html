@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+    <script defer src="http://localhost:8000/socket.io/socket.io.js"></script>
+    <script defer src="./js/client.js"></script>
+    <style>
+        .container{
+            display: none;
+            max-width: 920px;
+            background-color:#EBECED;
+            /* display: block; */
+            width: 100%;
+            padding: 10px;
+            margin: auto;
+            height: 60vh;
+            overflow: auto;
+            /* display: flex; */
+            flex-direction: column;
+            /* display: grid;
+            grid-template-columns: auto auto auto;
+            grid-gap: 10px; */
+        }
+        .head{
+            display: none;
+            text-align: center;
+            background-color:#135589;
+            color: white;
+            border-top-right-radius: 8px;
+            border-top-left-radius: 8px;
+            padding: 10px;
+            max-width: 920px;
+            /* display: block; */
+            width: 100%;
+            margin: auto;
+            /* grid-column: 1 / span 3; */
+        }
+        .right{
+            background-color: #2A93D5;
+            color: white;
+            text-align: center;
+            padding: 8px;
+            border-radius: 8px;
+            margin: auto;
+            margin-right: 0;
+            display: flex;
+            justify-self: right;
+            /* grid-column: 3; */
+        }
+        .mid{
+            background-color: #36384C;
+            color: white;
+            text-align: center;
+            padding: 5px;
+            border-radius: 8px;
+            margin: auto;
+            display: flex;
+            justify-self: center;
+            /* grid-column: 2; */
+        }
+        .left{
+            background-color: #4C586F;
+            color: white;
+            text-align: center;
+            padding: 8px;
+            border-radius: 8px;
+            margin: auto;
+            margin-left: 0;
+            display: flex;
+            justify-self: left;
+            flex-direction: column;
+            /* grid-column: 1; */
+        }
+        .left p{
+            margin: 0;
+            text-align: left;
+            font-weight: bold;
+            color: #3DDAD8;
+        }
+        .input{
+            display: none;
+            max-width: 920px;
+            background-color: #E7CC8F;
+            /* display: block; */
+            width: 100%;
+            margin: auto;
+            text-align: center;
+            padding: 10px;
+            border-bottom-right-radius: 8px;
+            border-bottom-left-radius: 8px;
+        }
+        #message{
+            width: 92%;
+            border-radius: 8px;
+            padding: 5px;
+            height: 30px;
+            background: transparent;
+            border: 2px solid #3E3E3B;
+        }
+        #btn{
+            border-radius: 8px;
+            height: 30px;
+            padding: auto 10px;
+            background-color: #FF7E5F;
+            color: white;
+            outline: none;
+        }
+        #btn:hover{
+            cursor: pointer;
+            background-color: white;
+            color: #FF7E5F;
+        }
+        .name{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            box-sizing: border-box;
+            background-color: snow;
+            text-align: center;
+            max-width: 440px;
+            padding: 20px;
+            margin: auto auto;
+            height: 200px;
+            transform: translate(-50%,-50%);
+            background-color: #6CBF84;
+            border-radius: 6px;
+            color: white;
+        }
+        .name input{
+            display: block;
+            margin: auto;
+            padding: 5px;
+            margin-bottom: 10px;
+            color: white;
+            border-radius: 6px;
+        }
+        #btnN{
+            background-color: #135589;
+            outline: none;
+        }
+        #btnN:hover{
+            background-color: white;
+            color: #135589;
+            padding: auto 10px;
+        }
+        #name{
+            background-color: transparent;
+        }
+        #name:focus{
+            background-color: white;
+            color: black;
+        }
+        @media screen and (max-width: 816px) {
+            .container{
+                height: 80vh;
+            }
+            #message{
+                width: 80%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="name" id="nameInput">
+        <h4>Enter your name: </h4>
+        <input type="text" placeholder="Enter" id="name">
+        <button id="btnN" onclick="begin()">Submit</button>
+    </div>
+    <div class="head" id="head">
+        <h1>E-Charcha</h1>
+    </div>
+    <div class="container" id="container">
+        <!-- <div class="right">
+            Me:Message from your side.
+        </div>
+        <div class="mid">
+            You joined the chat.
+        </div>
+        <div class="left">
+            <p>You:</p> 
+            You replied
+        </div> -->
+    </div>
+    <div class="input" id="text">
+        <form action="#" id="form">
+            <input type="text" id="message" placeholder="Message">
+            <input type="submit" id="btn" value="Send">
+        </form>
+    </div>
+</body>
+</html>
